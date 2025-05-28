@@ -405,7 +405,7 @@ class VisualTransformer(nn.Module):
 class RoPE2d_ViT_H_14_1024(VisualTransformer):
     def __init__(self):
         super().__init__(
-            patch_size=7, width=1280, layers=32,
+            patch_size=7, width=1024, layers=24,
             heads=16, mlp_ratio=4, output_dim=512)
 
 

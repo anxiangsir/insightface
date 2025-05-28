@@ -12,7 +12,7 @@ config.sample_rate = 0.1
 config.fp16 = True
 config.momentum = 0.9
 config.weight_decay = 5e-4
-config.batch_size = 32 # total_batch_size = batch_size * num_gpus
+config.batch_size = 128 # total_batch_size = batch_size * num_gpus
 config.lr = 0.1  # batch size is 512
 
 config.rec = "synthetic"

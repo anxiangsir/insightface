@@ -183,7 +183,9 @@ def main(args):
             train_loader.sampler.set_epoch(epoch)
         for _, (img, local_labels) in enumerate(train_loader):
             global_step += 1
-            local_embeddings = backbone(img)
+            with torch.cuda.amp.autocast():
+                local_embeddings = backbone(img)
+            local_embeddings = local_embeddings.float()
             loss: torch.Tensor = module_partial_fc(local_embeddings, local_labels)
 
             if cfg.fp16:
