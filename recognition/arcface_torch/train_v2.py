@@ -1,3 +1,6 @@
+import numpy as np
+np.bool = np.bool_  # Avoid warning in numpy 1.23+
+
 import argparse
 import logging
 import os
@@ -94,6 +97,7 @@ def main(args):
 
     backbone = get_model(
         cfg.network, dropout=0.0, fp16=cfg.fp16, num_features=cfg.embedding_size).cuda()
+    backbone = torch.compile(backbone)
 
     backbone = torch.nn.parallel.DistributedDataParallel(
         module=backbone, broadcast_buffers=False, device_ids=[local_rank], bucket_cap_mb=16,

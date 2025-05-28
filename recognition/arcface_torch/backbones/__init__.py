@@ -18,6 +18,10 @@ def get_model(name, **kwargs):
         from .iresnet2060 import iresnet2060
         return iresnet2060(False, **kwargs)
 
+    elif name == "vit_h_patch7_width1280_layers32_heads16_mlp4":
+        from .vit_v2 import vit_h_patch7_width1280_layers32_heads16_mlp4
+        return vit_h_patch7_width1280_layers32_heads16_mlp4(**kwargs)
+
     elif name == "mbf":
         fp16 = kwargs.get("fp16", False)
         num_features = kwargs.get("num_features", 512)
